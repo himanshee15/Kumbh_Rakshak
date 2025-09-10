@@ -4,7 +4,7 @@ Team Name: Tech Teerth
 Institute: SGSITS, Indore
 Registration ID: TH12137
 
-📖 Prototype Summary
+📖 Prototype Summary:
 The Maha Kumbh 2025 at Prayagraj expects 66+ crore pilgrims in 45 days, with up to 5 crore in one day. Current systems for crowd management, lost-and-found, and medical response are manual, fragmented, and too slow — often resulting in stampedes, delays, and loss of lives.
 Kumbh Rakshak is an AI-powered hybrid safety ecosystem that ensures every pilgrim’s safety through predictive crowd intelligence, Aadhaar-based family registration, and inclusive lost-and-found. The system is designed to prevent emergencies rather than react after harm is done, bridging the digital divide by serving both smartphone and non-smartphone users.
  
