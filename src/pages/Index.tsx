@@ -9,48 +9,32 @@ import { RegistrationPortal } from "@/components/RegistrationPortal";
 import { VoiceSearch } from "@/components/VoiceSearch";
 import { useLanguage } from "@/contexts/LanguageContext";
 import heroImage from "@/assets/mahakumbh-hero.jpg";
-import { 
-  Users, 
-  MapPin, 
-  Search, 
-  Shield, 
-  QrCode,
-  Map,
-  UserPlus,
-  AlertCircle
-} from "lucide-react";
-
+import { Users, MapPin, Search, Shield, QrCode, Map, UserPlus, AlertCircle } from "lucide-react";
 const Index = () => {
-  const { t } = useLanguage();
+  const {
+    t
+  } = useLanguage();
   const [currentView, setCurrentView] = useState<'home' | 'pilgrim' | 'admin' | 'register'>('home');
-
   if (currentView === 'register') {
     return <RegistrationPortal onBack={() => setCurrentView('home')} />;
   }
-
   if (currentView === 'pilgrim') {
     return <PilgrimDashboard onBack={() => setCurrentView('home')} />;
   }
-
   if (currentView === 'admin') {
     return <AdminDashboard onBack={() => setCurrentView('home')} />;
   }
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        />
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+        backgroundImage: `url(${heroImage})`
+      }} />
         <div className="absolute inset-0 bg-gradient-sacred opacity-80" />
         <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4">
-          <Badge className="mb-6 bg-gradient-gold text-foreground font-semibold text-lg px-6 py-2">
-            ॐ Mahakumbh 2025 Digital Platform
-          </Badge>
+          <Badge className="mb-6 bg-gradient-gold text-foreground font-semibold text-lg px-6 py-2">Mahakumbh 2025 Digital Platform</Badge>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl">
             {t('subtitle').split(', ')[0]}, <br />
             <span className="bg-gradient-divine bg-clip-text text-transparent">
@@ -61,29 +45,15 @@ const Index = () => {
             {t('description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              size="lg" 
-              className="bg-gradient-primary hover:shadow-divine transition-all duration-300 text-lg px-8 py-4"
-              onClick={() => setCurrentView('register')}
-            >
+            <Button size="lg" className="bg-gradient-primary hover:shadow-divine transition-all duration-300 text-lg px-8 py-4" onClick={() => setCurrentView('register')}>
               <UserPlus className="mr-2 h-5 w-5" />
               {t('register')}
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm text-lg px-8 py-4"
-              onClick={() => setCurrentView('pilgrim')}
-            >
+            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm text-lg px-8 py-4" onClick={() => setCurrentView('pilgrim')}>
               <MapPin className="mr-2 h-5 w-5" />
               {t('pilgrimPortal')}
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm text-lg px-8 py-4"
-              onClick={() => setCurrentView('admin')}
-            >
+            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm text-lg px-8 py-4" onClick={() => setCurrentView('admin')}>
               <Shield className="mr-2 h-5 w-5" />
               {t('adminAccess')}
             </Button>
@@ -214,20 +184,11 @@ const Index = () => {
             Join millions of devotees in experiencing the most technologically advanced Mahakumbh ever organized.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-gradient-primary hover:shadow-divine transition-all duration-300"
-              onClick={() => setCurrentView('register')}
-            >
+            <Button size="lg" className="bg-gradient-primary hover:shadow-divine transition-all duration-300" onClick={() => setCurrentView('register')}>
               <UserPlus className="mr-2 h-5 w-5" />
               {t('register')}
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-primary/30 hover:bg-primary/10"
-              onClick={() => setCurrentView('admin')}
-            >
+            <Button size="lg" variant="outline" className="border-primary/30 hover:bg-primary/10" onClick={() => setCurrentView('admin')}>
               <Shield className="mr-2 h-5 w-5" />
               {t('adminAccess')}
             </Button>
@@ -263,8 +224,6 @@ const Index = () => {
       </footer>
       
       <VoiceSearch />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
