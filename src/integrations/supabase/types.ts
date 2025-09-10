@@ -141,6 +141,36 @@ export type Database = {
           },
         ]
       }
+      profiles: {
+        Row: {
+          aadhar: string
+          created_at: string | null
+          dob: string
+          id: string
+          mobile: string
+          name: string
+          qr_code_url: string | null
+        }
+        Insert: {
+          aadhar: string
+          created_at?: string | null
+          dob: string
+          id: string
+          mobile: string
+          name: string
+          qr_code_url?: string | null
+        }
+        Update: {
+          aadhar?: string
+          created_at?: string | null
+          dob?: string
+          id?: string
+          mobile?: string
+          name?: string
+          qr_code_url?: string | null
+        }
+        Relationships: []
+      }
       user_groups: {
         Row: {
           group_id: string

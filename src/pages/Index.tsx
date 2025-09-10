@@ -5,24 +5,28 @@ import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/Navigation";
 import { PilgrimDashboard } from "@/components/PilgrimDashboard";
 import { AdminDashboard } from "@/components/AdminDashboard";
+import { RegistrationPortal } from "@/components/RegistrationPortal";
+import { VoiceSearch } from "@/components/VoiceSearch";
+import { useLanguage } from "@/contexts/LanguageContext";
 import heroImage from "@/assets/mahakumbh-hero.jpg";
 import { 
   Users, 
   MapPin, 
   Search, 
   Shield, 
-  Heart, 
   QrCode,
-  Activity,
   Map,
   UserPlus,
-  AlertCircle,
-  Star,
-  Navigation as NavigationIcon
+  AlertCircle
 } from "lucide-react";
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState<'home' | 'pilgrim' | 'admin'>('home');
+  const { t } = useLanguage();
+  const [currentView, setCurrentView] = useState<'home' | 'pilgrim' | 'admin' | 'register'>('home');
+
+  if (currentView === 'register') {
+    return <RegistrationPortal onBack={() => setCurrentView('home')} />;
+  }
 
   if (currentView === 'pilgrim') {
     return <PilgrimDashboard onBack={() => setCurrentView('home')} />;
@@ -45,26 +49,34 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-sacred opacity-80" />
         <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4">
           <Badge className="mb-6 bg-gradient-gold text-foreground font-semibold text-lg px-6 py-2">
-            🕉️ Mahakumbh 2025 Digital Platform
+            ॐ Mahakumbh 2025 Digital Platform
           </Badge>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl">
-            Sacred Journey, <br />
+            {t('subtitle').split(', ')[0]}, <br />
             <span className="bg-gradient-divine bg-clip-text text-transparent">
-              Digital Guidance
+              {t('subtitle').split(', ')[1]}
             </span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
-            Experience the divine gathering with AI-powered family tracking, instant issue resolution, 
-            and real-time crowd management for a blessed and safe pilgrimage.
+            {t('description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
               className="bg-gradient-primary hover:shadow-divine transition-all duration-300 text-lg px-8 py-4"
-              onClick={() => setCurrentView('pilgrim')}
+              onClick={() => setCurrentView('register')}
             >
               <UserPlus className="mr-2 h-5 w-5" />
-              Pilgrim Portal
+              {t('register')}
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm text-lg px-8 py-4"
+              onClick={() => setCurrentView('pilgrim')}
+            >
+              <MapPin className="mr-2 h-5 w-5" />
+              {t('pilgrimPortal')}
             </Button>
             <Button 
               size="lg" 
@@ -73,7 +85,7 @@ const Index = () => {
               onClick={() => setCurrentView('admin')}
             >
               <Shield className="mr-2 h-5 w-5" />
-              Admin Access
+              {t('adminAccess')}
             </Button>
           </div>
         </div>
@@ -97,7 +109,7 @@ const Index = () => {
                 <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Users className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-xl">AI Family Grouping</CardTitle>
+                <CardTitle className="text-xl">{t('aiFamilyGrouping')}</CardTitle>
                 <CardDescription>
                   Intelligent family member linking with facial recognition and Aadhar integration for seamless group management.
                 </CardDescription>
@@ -109,7 +121,7 @@ const Index = () => {
                 <div className="w-12 h-12 rounded-lg bg-gradient-sacred flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-xl">Live Family Tracking</CardTitle>
+                <CardTitle className="text-xl">{t('liveTracking')}</CardTitle>
                 <CardDescription>
                   Real-time location sharing within family groups with privacy controls and emergency alerts for peace of mind.
                 </CardDescription>
@@ -121,7 +133,7 @@ const Index = () => {
                 <div className="w-12 h-12 rounded-lg bg-gradient-gold flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Search className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-xl">Smart Lost & Found</CardTitle>
+                <CardTitle className="text-xl">{t('lostFound')}</CardTitle>
                 <CardDescription>
                   AI-powered matching system for lost items and people with instant notifications and photo recognition.
                 </CardDescription>
@@ -133,7 +145,7 @@ const Index = () => {
                 <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Map className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-xl">Crowd Density Map</CardTitle>
+                <CardTitle className="text-xl">{t('crowdDensity')}</CardTitle>
                 <CardDescription>
                   Real-time crowd visualization with heatmaps to find less crowded paths and optimal visit times.
                 </CardDescription>
@@ -145,7 +157,7 @@ const Index = () => {
                 <div className="w-12 h-12 rounded-lg bg-gradient-sacred flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <QrCode className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-xl">Aadhar QR System</CardTitle>
+                <CardTitle className="text-xl">{t('qrSystem')}</CardTitle>
                 <CardDescription>
                   Secure QR code generation for instant identity verification and family details access for authorities.
                 </CardDescription>
@@ -157,7 +169,7 @@ const Index = () => {
                 <div className="w-12 h-12 rounded-lg bg-gradient-gold flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <AlertCircle className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-xl">Issue Resolution</CardTitle>
+                <CardTitle className="text-xl">{t('issueResolution')}</CardTitle>
                 <CardDescription>
                   24/7 support system with AI chatbot and direct connection to volunteers and police for immediate assistance.
                 </CardDescription>
@@ -205,10 +217,10 @@ const Index = () => {
             <Button 
               size="lg" 
               className="bg-gradient-primary hover:shadow-divine transition-all duration-300"
-              onClick={() => setCurrentView('pilgrim')}
+              onClick={() => setCurrentView('register')}
             >
               <UserPlus className="mr-2 h-5 w-5" />
-              Register as Pilgrim
+              {t('register')}
             </Button>
             <Button 
               size="lg" 
@@ -217,7 +229,7 @@ const Index = () => {
               onClick={() => setCurrentView('admin')}
             >
               <Shield className="mr-2 h-5 w-5" />
-              Admin Login
+              {t('adminAccess')}
             </Button>
           </div>
         </div>
@@ -227,8 +239,14 @@ const Index = () => {
       <footer className="bg-muted py-12 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex items-center justify-center mb-6">
-            <div className="text-2xl font-bold bg-gradient-sacred bg-clip-text text-transparent">
-              🕉️ Mahakumbh Digital
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center">
+                <span className="text-white text-lg font-bold">ॐ</span>
+              </div>
+              <MapPin className="h-6 w-6 text-primary" />
+            </div>
+            <div className="text-2xl font-bold bg-gradient-sacred bg-clip-text text-transparent ml-3">
+              {t('title')}
             </div>
           </div>
           <p className="text-muted-foreground mb-4">
@@ -243,6 +261,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
+      
+      <VoiceSearch />
     </div>
   );
 };
