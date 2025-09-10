@@ -2,39 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Mahakumbh Design System - Colors inspired by sacred traditions */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 35 20% 98%;
+    --foreground: 15 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 15 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 15 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Sacred Saffron Primary */
+    --primary: 18 95% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 25 100% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Ganga Blue Secondary */
+    --secondary: 200 85% 45%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Sacred Gold Accent */
+    --accent: 45 100% 51%;
+    --accent-foreground: 15 15% 15%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 35 15% 95%;
+    --muted-foreground: 15 10% 50%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 15% 88%;
+    --input: 35 15% 92%;
+    --ring: 18 95% 60%;
+
+    /* Beautiful Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-sacred: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--accent)), hsl(45 90% 60%));
+    --gradient-divine: linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--accent)));
+    
+    /* Shadows */
+    --shadow-divine: 0 10px 40px -10px hsl(var(--primary) / 0.3);
+    --shadow-sacred: 0 8px 30px -8px hsl(var(--secondary) / 0.25);
+    --shadow-gold: 0 6px 25px -6px hsl(var(--accent) / 0.3);
 
     --radius: 0.5rem;
 
